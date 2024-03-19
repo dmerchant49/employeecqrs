@@ -26,6 +26,13 @@ namespace EmployeeApi.Controllers
             return await _mediator.Send(new GetEmployeesQuery());
         }
 
+        [HttpGet]
+        [Route("getemployee/{id:int}")]
+        public async Task<models.EmployeeReadModel> Get(int id)
+        {
+            return await _mediator.Send(new GetEmployeeQuery(){Id=id});
+        }
+
         [HttpPost]
         [Route("addEmployee")]
         public async Task<models.Employee> PostAsync(models.Employee employee)
